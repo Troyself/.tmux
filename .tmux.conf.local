@@ -361,7 +361,7 @@ tmux_conf_theme_clock_style="24"
 #   - false (default)
 #   - disabled
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- urlscan -------------------------------------------------------------------
@@ -378,16 +378,16 @@ tmux_conf_urlscan_options="--compact --dedupe"
 #set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
+set -g status-keys vi
+set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
+set -gu prefix2
+unbind C-a
 # unbind C-b
 # set -g prefix C-a
 # bind C-a send-prefix
@@ -422,7 +422,7 @@ tmux_conf_update_plugins_on_reload=true
 # plugins are enabled
 #   - true (default)
 #   - false
-tmux_conf_uninstall_plugins_on_reload=true
+tmux_conf_uninstall_plugins_on_reload=false
 
 # /!\ the tpm bindings differ slightly from upstream:
 #   - installing plugins: <prefix> + I
@@ -434,12 +434,13 @@ tmux_conf_uninstall_plugins_on_reload=true
 
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
-#set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-cpu'
-#set -g @plugin 'tmux-plugins/tmux-resurrect'
+#set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
-#set -g @continuum-restore 'on'
-
+#set -g @plugin 'tmux-plugins/tmux-pane-focus'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'MunifTanjim/tmux-suspend'
+set -g @plugin 'graemedavidson/tmux-pane-focus'
 
 # -- custom variables ----------------------------------------------------------
 
@@ -480,3 +481,5 @@ tmux_conf_uninstall_plugins_on_reload=true
 # "$@"
 # # /!\ do not remove the previous line
 # #     do not write below this line
+
+source-file  ~/.tmux.conf.local.troy
